@@ -1,0 +1,176 @@
+models:
+
+  - name: stg_laliga__arbitros
+    description: "Stage de la tabla arbitros."
+    columns:
+      - name: id
+        description: "Clave subrogada de arbitro."
+        tests:
+          - unique
+      - name: nombre
+        description: >
+          Nombre y apellidos del arbitro
+  - name: stg_laliga__competicion
+    description: "Stage de la tabla competicion."
+    columns:
+      - name: id
+        description: "Clave subrogada de competicion."
+        tests:
+          - unique
+      - name: nombre
+        description: >
+          Nombre de la competicion.
+      - name: id_pais
+        description: >
+          Clave foránea al id del pais de la competición.
+  - name: stg_laliga__equipos
+    columns:
+      - name: id
+        description: "Clave subrogada de equipo."
+        tests:
+          - unique
+      - name: nombre
+        description: "Nombre del equipo"
+  - name: stg_laliga__estadios
+    columns:
+      - name: id
+        description: "Clave subrogada de estadios."
+        tests:
+          - unique
+      - name: nombre
+        description: "Nombre del estadio"
+      - name: aforo
+        description: "Aforo máximo del estadio"
+  - name: stg_laliga__formaciones
+    columns:
+      - name: id
+        description: "Clave subrogada de formaciones."
+        tests:
+          - unique
+      - name: nombre
+        description: "Nombre de la formacion"
+  - name: stg_laliga__jornada
+    columns:
+      - name: id
+        description: "Clave subrogada de la jornada."
+        tests:
+          - unique
+      - name: jornada
+        description: "Nombre de la jornada"
+      - name: id_temporada
+        description: "Clave foránea a la temporada"
+  - name: stg_laliga_jugadores
+    columns:
+      - name: id
+        description: "Clave subrogada del partido."
+        tests:
+          - unique
+      - name: nombre
+        description: "Nombre que lleva el jugador en la camiseta"
+      - name: nombre_completo
+        description: "Nombre completo del jugador"
+      - name: id_pierna_dominate
+        description: "Clave foránea a la tabla Pierna Dominante"
+      - name: id_posicion
+        description: "Clave foránea a la tabla Posicion"
+      - name: id_pais
+        description: "Clave foránea a la tabla Pais"
+      - name: altura_cm
+        description: "Altura en centímetros del jugador"
+      - name: peso_kg
+        description: "Peso en kilogramos del jugador"
+      - name: elo
+        description: "Elo del jugador"
+      - name: potencial
+        description: "Potencial del jugador"
+      - name: fecha_nacimiento
+        description: "Fecha de nacimiento del jugador"
+  - name: stg_laliga__pais
+    columns:
+      - name: id
+        description: "Clave subrrogada de país"
+        tests:
+          - unique
+      - name: pais
+        description: "Nombre del país"
+  - name: stg_laliga_partidos
+    columns:
+      - name: id
+        description: "Clave subrrogada del partido"
+        tests:
+          - unique
+      - name: id_jornada
+        description: "Clave foránea a la jornada"
+      - name: id_jornada
+        description: "Clave foránea a la jornada"
+      - name: id_jornada
+        description: "Clave foránea a la jornada"
+      - name: id_jornada
+        description: "Clave foránea a la jornada"
+      - name: id_jornada
+        description: "Clave foránea a la jornada"
+      - name: id_jornada
+        description: "Clave foránea a la jornada"
+      - name: id_jornada
+        description: "Clave foránea a la jornada"
+      - name: id_jornada
+        description: "Clave foránea a la jornada"
+      - name: resultado_local
+        description: "Resultado del equipo local al final del partido"
+      - name: resultado_local
+        description: "Resultado del equipo local al final del partido"
+      - name: num_asistentes
+        description: "Número de asistentes al partido"
+      - name: fecha_partido_utc
+        description: "Fecha del partido en formato UTC"
+  - name: stg_laliga__pierna_dominante
+    columns:
+      - name: id
+        description: "Id subrrogado de pierna dominate"
+        tests:
+          - unique
+      - name: pierna_dominante
+        description: "Nombre de la pierna dominante"
+  - name: stg_laliga__posicion
+    columns:
+      - name: id
+        description: "Id subrrogado de posición"
+        tests:
+          - unique
+      - name: posicion
+        description: "Nombre de la posición"
+  - name: stg_laliga__temporada
+    columns:
+      - name: id
+        description: "Id subrrogado de temporada"
+        tests:
+          - unique
+      - name: temporada
+        description: "Nombre de la temporada"
+  - name: stg_laliga__tipo_eventos
+    columns:
+      - name: id
+        description: "Id subrrogado del tipo de la posición"
+        tests:
+          - unique
+      - name: tipo_evento
+        description: "Tipo de evento generado"
+  - name: stg_laliga__eventos_partido
+    columns:
+      - name: id
+        description: "Id subrrogado de eventos partido"
+        tests:
+          - unique
+      - name: id_partido
+        description: "Clave foránea a partido"
+      - name: id_jugador
+        description: "Clave foránea a jugador"
+        tests:
+          - relationships:
+              to: ref('stg_laliga__jugador')
+              field: id
+      - name: minuto
+        description: "Minuto de partido donde ocurrió el evento"
+      - name: localidad
+        description: "Especifica si el evento ha sido local o visitante"
+  
