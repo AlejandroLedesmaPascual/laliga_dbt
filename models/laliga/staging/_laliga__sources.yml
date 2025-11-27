@@ -1,0 +1,142 @@
+sources:
+
+  - name: laliga
+    schema: laliga
+    database: ALUMNO2_DEV_BRONZE_DB
+
+    tables:
+      - name: eventos_partido
+        columns:
+          - name: id_partido
+            description: >
+              Identificador del partido.
+          - name: fecha_partido
+            description: >
+              Fecha en la ocurrió el partido
+            data_tests:
+              - not_null
+          - name: minuto_evento
+            description: >
+              Minuto del partido cuándo ocurrió el evento
+          - name: jugador
+            description: >
+              Jugador que protagoniza el evento
+            data_tests:
+              - not_null
+          - name: es_local
+            description: >
+              Localidad donde ocurrió el evento
+            tests:
+              - not_null
+              - accepted_values:
+                  values:
+                    - away
+                    - home
+          - name: tipo_evento
+            description: >
+              Tipo de evento que ocurrió
+            tests:
+              - not_null
+          - name: fecha_carga
+            description: >
+              Fecha en la que se cargaron los datos
+      - name: jugadores
+        columns:
+          - name: fecha_nacimiento
+            description: >
+              Fecha de nacimiento del jugador
+          - name: elo
+            description: >
+              Valoración del jugador en el mercado
+              de fichajes
+          - name: pierna_dominante
+            description: >
+              Pierna dominante del jugador
+          - name: nombre_completo
+            description: >
+              Nombre completo del jugador
+          - name: altura 
+            description: >
+              La altura del jugador
+          - name: id_jugador
+            description: >
+              Identificador del único del jugador
+            data_tests:
+              - not_null
+          - name: nombre
+            description: >
+              Nombre del jugador en la camiseta
+          - name: posicion 
+            description: >
+              Posición en la que juega el jugador
+          - name: potencial
+            description: >
+              Está unida con el ELO. Sirve para ver
+              el posible nivel de mejora de un jugador
+          - name: peso
+            description: >
+              Peso del jugador
+          - name: fecha_carga
+            description: >
+              Fecha en la que se cargaron los datos
+      - name: partidos
+        columns:
+          - name: temporada
+            description: >
+              Temporada en la que que se jugó
+              el partido
+          - name: jornada
+            description: >
+              Jornada en la que se jugó el 
+              partido
+          - name: competicion
+            description: >
+              Competición a la que pertenece el partido
+          - name: pais_competicion
+            description: >
+              País al que pertenece la competición
+          - name: id_partido
+            description: >
+              Identificador único del partido
+          - name: arbitro
+            description: >
+              Arbitro del partido
+          - name: fecha
+            description: >
+              Fecha del partido
+          - name: equipo_local
+            description: >
+              Equipo local
+          - name: equipo_visitante
+            description: >
+              Equipo visitante
+          - name: resultado_local
+            description: >
+              Resultado local del partido
+          - name: resultado_visitante
+            description: >
+              Resultado visitante del partido
+          - name: formacion_local
+            description: >
+              Formación usada por el equipo local
+          - name: formacion_visitante
+            description: >
+              Formación usada por el equipo visitante
+          - name: estadio
+            description: >
+              Estadio donde se juega el partido
+          - name: aforo
+            description: >
+              Aforo máximo que permite el partido
+            data_tests:
+              - dbt_utils.accepted_range:
+                  min_value: 1
+          - name: asistencia
+            description: >
+              Asistencia al partido
+            data_tests:
+              - dbt_utils.accepted_range:
+                  min_value: 1
+          - name: fecha_carga
+            description: >
+              Fecha en la que se cargaron los datos
